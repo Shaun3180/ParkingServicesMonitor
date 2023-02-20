@@ -21,7 +21,7 @@ Note: this is my first foray with Python, FWIW...
 
 * Once powered on, the Pi should automatically connect to Wifi.  Since Wifi is spotty is where i park, the Pi will start polling a separate app I wrote every 5 minutes.  If a ping is unsuccessful, I will be sent a text alert using Twilio
 * Once powered on, the Pi camera will continuously monitor the road.
-* When a passing vehicle matches a trained Haar cascade, identifying a city vehicle, a still of the positive match will be saved sent via FTP to a server I have access to.
+* When a passing vehicle matches a trained Haar cascade, identifying a city vehicle, a still of the positive match will be saved/sent via FTP to a server I have access to.
 * Using Twilio, that FTP'd image will be sent to me for verification purposes
 
 ## General Steps To Recreate

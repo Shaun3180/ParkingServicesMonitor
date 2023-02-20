@@ -3,7 +3,7 @@
 
 This project's goal is to avoid parking tickets.  The general idea is to use a Pi camera / Haar cascade to attempt to recognize a passing City of Fort Collins parking services vehicle so I don't  have to move my car quite as frequently (i.e., to park in one spot for longer without worrying about parking tickets).  As I park in a 2 hour parking zone, I want to be able to park for as long as I can without having to move my car unnecessarily.   Therefore, once a parking services vehicle drives by, the Pi's job is to try and recognize their distinct vehicle and text an image of it to me for verification purposes, at which point I know that I will need to move my vehicle 2 hours later (since as far as parking services knows, I had just parked there).
 
-Note: this is my first foray with Python, FWIW... 
+Note: Use at your own risk - this is my first foray with Python, FWIW... 
 
 ![Positive Match](https://raw.githubusercontent.com/Shaun3180/ParkingServicesMonitor/main/detectedobject.jpg)
 

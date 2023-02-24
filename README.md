@@ -34,7 +34,9 @@ Note: Use at your own risk - this is my first foray with Python, FWIW...
 * Install Twilio (for sending me a text) using: pip install twilio
 * Install Paramiko (for uploading files using SFTP) using: pip install paramiko.  While attempting to install paramiko, I received the following error: "Failed to build wheel for bcrypt", which I solved using sudo pip install -U "bcrypt<4.0.0", as per https://github.com/adriankumpf/teslamate/discussions/2881
 * As per https://raspberrypi-guide.github.io/programming/run-script-on-boot#using-rclocal, edited crontab -e to make sure my identify-car python script runs on boot and logs errors to a log.log file: @reboot python /path/to/file.py >> /path/to/log.log 2>&1
-* Most importantly, I used the free Windows app, "[CASCADE TRAINER GUI](https://amin-ahmadi.com/cascade-trainer-gui/)" in order to train my model.  You can use the following python to obtain a sample video: 
+* Most importantly, I used the free Windows app, "[CASCADE TRAINER GUI](https://amin-ahmadi.com/cascade-trainer-gui/)" in order to train my model.  You can use the following python to obtain a sample video:
+
+save-video.py:
 
     import time
     
@@ -49,4 +51,6 @@ Note: Use at your own risk - this is my first foray with Python, FWIW...
     picam2.start_recording(encoder, output)
     time.sleep(1800)
     picam2.stop_recording()
+
+sample crontab-e:
 

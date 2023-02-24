@@ -21,7 +21,7 @@ Note: Use at your own risk - this is my first foray with Python, FWIW...
 ## Overview of Goals
 
 * Once powered on, the Pi should automatically connect to Wifi.  Since Wifi is spotty is where i park, the Pi will start polling a separate app I wrote every 5 minutes.  If a ping is unsuccessful, I will be sent a text alert using Twilio
-* Once powered on, the Pi camera will continuously monitor the road.
+* Once powered on, the Pi camera will continuously monitor the road using the [identify-car.py](https://github.com/Shaun3180/ParkingServicesMonitor/blob/main/identify-car.py "identify-car.py") python script.
 * When a passing vehicle matches a trained Haar cascade, identifying a city vehicle, a still of the positive match will be saved/sent via FTP to a server I have access to.
 * Using Twilio, that FTP'd image will be sent to me for verification purposes
 
@@ -33,8 +33,8 @@ Note: Use at your own risk - this is my first foray with Python, FWIW...
 * Install OpenCV (for handling haar cascades): pip install opencv-python
 * Install Twilio (for sending me a text) using: pip install twilio
 * Install Paramiko (for uploading files using SFTP) using: pip install paramiko.  While attempting to install paramiko, I received the following error: "Failed to build wheel for bcrypt", which I solved using sudo pip install -U "bcrypt<4.0.0", as per https://github.com/adriankumpf/teslamate/discussions/2881
-* As per https://raspberrypi-guide.github.io/programming/run-script-on-boot#using-rclocal, edited crontab -e to make sure my identify-car python script runs on boot and logs errors to a log.log file: @reboot python /path/to/file.py >> /path/to/log.log 2>&1
-* Most importantly, I used the free Windows app, "[CASCADE TRAINER GUI](https://amin-ahmadi.com/cascade-trainer-gui/)" in order to train my model.  You can use the following python to obtain a sample video:
+* Edited crontab -e to make sure my identify-car python script runs on boot (see screenshot below) and logs errors to a log.log file: @reboot python /path/to/file.py >> /path/to/log.log 2>&1
+* Most importantly, I used the free Windows app, "[CASCADE TRAINER GUI](https://amin-ahmadi.com/cascade-trainer-gui/)" in order to train my model.  You can use the following python script to obtain a sample 30 minute video from which you can create still images to create your Haar classifier:
 
 save-video.py:
 

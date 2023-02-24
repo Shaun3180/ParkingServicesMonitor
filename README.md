@@ -33,4 +33,20 @@ Note: Use at your own risk - this is my first foray with Python, FWIW...
 * Install Twilio (for sending me a text) using: pip install twilio
 * Install Paramiko (for uploading files using SFTP) using: pip install paramiko.  While attempting to install paramiko, I received the following error: "Failed to build wheel for bcrypt", which I solved using sudo pip install -U "bcrypt<4.0.0", as per https://github.com/adriankumpf/teslamate/discussions/2881
 * As per https://raspberrypi-guide.github.io/programming/run-script-on-boot#using-rclocal, edited crontab -e to make sure my identify-car python script runs on boot and logs errors to a log.log file: @reboot python /path/to/file.py >> /path/to/log.log 2>&1
-* Most importantly, I used the free Windows app, "[CASCADE TRAINER GUI](https://amin-ahmadi.com/cascade-trainer-gui/)" in order to train a model using about 70 positive and negative images.  Ideally I'd like to obtain a lot more than that (to reduce false positives), but it's good enough for now, given I am able to verify each image and I park on a lightly-trafficked road.
+* Most importantly, I used the free Windows app, "[CASCADE TRAINER GUI](https://amin-ahmadi.com/cascade-trainer-gui/)" in order to train my model.  You can use the following python to obtain a sample video
+
+# https://www.tomshardware.com/how-to/use-picamera2-take-photos-with-raspberry-pi
+import time
+
+from picamera2.encoders import H264Encoder
+from picamera2 import Picamera2
+
+picam2 = Picamera2()
+video_config = picam2.create_video_configuration(main={"size": (1920, 1080)}, lores={"size": (640, 480)}, display="lores")
+picam2.configure(video_config)
+encoder = H264Encoder(bitrate=10000000)
+output = "/home/pi/apps/save-video/footage.h264"
+picam2.start_recording(encoder, output)
+time.sleep(1800)
+picam2.stop_recording()
+
